@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=twuproject
+
+create_boats_table 2023-11-30T23:59:12Z PatrickLin <patrick@button.is> # Create boats table
+insert_dummy_data [create_boats_table] 2023-12-01T00:09:24Z PatrickLin <patrick@button.is> # Insert dummy data into boats table

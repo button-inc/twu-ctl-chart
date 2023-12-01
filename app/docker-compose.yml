@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: user
+      DB_HOST: host
+      DB_NAME: dbname
+      DB_PASSWORD: password
+      DB_PORT: 5432

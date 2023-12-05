@@ -42,9 +42,25 @@
       # Create the Directory in Your Home Folder
       mkdir ~/cloudsqlproxy
 
-      ./cloud_sql_proxy -dir=~/cloudsqlproxy -instances=goog-cloud-infrastructure:us-central1:twu-pat-db &
+      #Start Cloud SQL Proxy
+      # keep Cloud SQL Proxy running even after the SSH session ends
+      nohup ./cloud_sql_proxy -dir=/home/patrick/cloudsql -instances=goog-cloud-infrastructure:us-central1:twu-pat-db &
 
-   
+```
+
+6. Docker Run
+```bash
+      # run the docker img
+      # pass in the env variables
+      # set the DB_HOST to cloudSQL proxy
+      docker run -d -p 80:3000 --name myapp \
+      -v /home/patrick/cloudsql:/cloudsql \
+      -e DB_USER=postgres \
+      -e DB_HOST=/cloudsql/goog-cloud-infrastructure:us-central1:twu-pat-db \
+      -e DB_NAME=twu_pat_db \
+      -e DB_PASSWORD=twu-db-pw \
+      -e DB_PORT=5432 \
+      ghcr.io/button-inc/twu-ctl-chart:latest
 
 ```
 

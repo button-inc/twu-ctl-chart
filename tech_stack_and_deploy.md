@@ -11,4 +11,36 @@
 ```bash
      sudo apt-get update
      sudo apt-get install docker.io
+
+     # Add User to the Docker Group
+     sudo usermod -aG docker $USER
+     newgrp docker
+
+     # verify the membership
+     groups
+
+     # Start Docker service
+     sudo systemctl start docker
+     sudo systemctl enable docker
+
+     # login to github container registry
+     echo "[PersonalAccessTockenPAT]" | docker login ghcr.io -u [githubUsername] --password-stdin
+
+     # pull the docker img from ghcr
+     docker pull ghcr.io/button-inc/twu-ctl-chart:latest
+
 ```
+
+4. Enable the Cloud SQL Admin API: [Enable Cloud SQL Admin API](https://console.developers.google.com/apis/api/sqladmin.googleapis.com/overview?project=1084067978523).
+
+5. Connect with CloudSQL from the VM Instance
+```bash
+      # Create the Directory in Your Home Folder
+      mkdir ~/cloudsqlproxy
+
+      ./cloud_sql_proxy -dir=~/cloudsqlproxy -instances=goog-cloud-infrastructure:us-central1:twu-pat-db &
+
+   
+
+```
+

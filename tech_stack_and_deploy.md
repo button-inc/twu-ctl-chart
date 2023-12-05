@@ -46,6 +46,10 @@
       # keep Cloud SQL Proxy running even after the SSH session ends
       nohup ./cloud_sql_proxy -dir=/home/patrick/cloudsql -instances=goog-cloud-infrastructure:us-central1:twu-pat-db &
 
+      # Test the connection with postgres
+      psql -h /home/patrick/cloudsql/goog-cloud-infrastructure\:us-central1\:twu-pat-db -U postgres -d twu_pat_db
+
+
 ```
 
 6. Docker Run
@@ -61,6 +65,12 @@
       -e DB_PASSWORD=twu-db-pw \
       -e DB_PORT=5432 \
       ghcr.io/button-inc/twu-ctl-chart:latest
+
+      # tips
+      # to stop the container
+      docker stop myapp
+      # to remove the container
+      docker rm myapp
 
 ```
 

@@ -58,7 +58,7 @@ export default function Home() {
             <button 
                 onClick={handleCreateBoat}
                 style={{ 
-                    border:'solid', marginLeft:'15px', padding:'5px' 
+                    border:'solid', marginLeft:'15px', padding:'3px' 
                 }}
                 >
                     ADD
@@ -89,7 +89,14 @@ export default function Home() {
                                   <option value="Maintenance">Maintenance</option>
                               </select>
                           </td>
-                          <td style={{ padding: '0 10px' }}><button onClick={() => handleDeleteBoat(boat.id)}>DELETE</button></td>
+                          <td style={{ padding: '0 10px' }}>
+                            <button 
+                                onClick={() => handleDeleteBoat(boat.id)}
+                                style={{ 
+                                    border:'solid', padding:'2px' 
+                                }}
+                            >DELETE</button>
+                            </td>
                       </tr>
                   ))}
               </tbody>
